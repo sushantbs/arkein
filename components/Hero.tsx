@@ -9,7 +9,7 @@ export default function Hero() {
           Charge Your EV Anywhere, Anytime
         </h1>
         <p className="mt-6 text-lg text-muted-foreground max-w-3xl mx-auto">
-          ArkeinElectric brings the charging station to you. Choose your
+          Arkein Electric brings the charging station to you. Choose your
           location, and we will ensure your EV gets the power it needs.
         </p>
         <div className="mt-10 flex justify-center gap-4">
