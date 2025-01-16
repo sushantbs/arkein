@@ -1,5 +1,5 @@
-import { Button } from '@/components/ui/button'
-import { MapPin, Calendar, BatteryCharging, CheckCircle } from 'lucide-react'
+import { Button } from "@/components/ui/button";
+import { MapPin, Calendar, BatteryCharging, CheckCircle } from "lucide-react";
 
 const steps = [
   {
@@ -22,13 +22,15 @@ const steps = [
     description: "Your EV is charged and ready to go!",
     icon: CheckCircle,
   },
-]
+];
 
 export default function HowItWorks() {
   return (
     <section id="how-it-works" className="py-20 px-6">
       <div className="container max-w-7xl mx-auto">
-        <h2 className="text-3xl font-bold text-center mb-12">How ArkeinElectric Works</h2>
+        <h2 className="text-3xl font-bold text-center mb-12">
+          How Arkein Electric Works
+        </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {steps.map((step, index) => (
             <div key={index} className="flex flex-col items-center text-center">
@@ -41,10 +43,11 @@ export default function HowItWorks() {
           ))}
         </div>
         <div className="mt-12 text-center">
-          <Button size="lg" className="font-semibold">Start Charging Now</Button>
+          <Button size="lg" className="font-semibold">
+            Start Charging Now
+          </Button>
         </div>
       </div>
     </section>
-  )
+  );
 }
-

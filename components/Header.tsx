@@ -1,6 +1,5 @@
-import Link from 'next/link'
-import { Button } from '@/components/ui/button'
-import { BatteryCharging } from 'lucide-react'
+import Link from "next/link";
+import { BatteryCharging } from "lucide-react";
 
 export default function Header() {
   return (
@@ -11,22 +10,20 @@ export default function Header() {
           <span className="font-bold text-xl">ArkeinElectric</span>
         </Link>
         <nav className="hidden md:flex space-x-6">
-          <Link href="#features" className="text-sm font-medium transition-colors hover:text-primary">
+          <Link
+            href="#features"
+            className="text-sm font-medium transition-colors hover:text-primary"
+          >
             Features
           </Link>
-          <Link href="#how-it-works" className="text-sm font-medium transition-colors hover:text-primary">
+          <Link
+            href="#how-it-works"
+            className="text-sm font-medium transition-colors hover:text-primary"
+          >
             How It Works
           </Link>
-          <Link href="#testimonials" className="text-sm font-medium transition-colors hover:text-primary">
-            Testimonials
-          </Link>
         </nav>
-        <div className="flex items-center space-x-4">
-          <Button variant="ghost">Log In</Button>
-          <Button>Sign Up</Button>
-        </div>
       </div>
     </header>
-  )
+  );
 }
-
