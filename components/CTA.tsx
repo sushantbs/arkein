@@ -1,5 +1,4 @@
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
+import EmailForm from "@/components/EmailForm";
 
 export default function CTA() {
   return (
@@ -14,14 +13,7 @@ export default function CTA() {
           charge your EV anywhere.
         </p>
         <div className="flex flex-col sm:flex-row justify-center gap-4 max-w-md mx-auto">
-          <Input
-            type="email"
-            placeholder="Enter your email"
-            className="flex-grow"
-          />
-          <Button size="lg" className="font-semibold">
-            Get Started
-          </Button>
+          <EmailForm />
         </div>
       </div>
     </section>
