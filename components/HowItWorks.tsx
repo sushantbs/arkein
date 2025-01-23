@@ -1,5 +1,8 @@
+"use client";
+
 import { Button } from "@/components/ui/button";
 import { MapPin, Calendar, BatteryCharging, CheckCircle } from "lucide-react";
+import { useRouter } from "next/navigation";
 
 const steps = [
   {
@@ -25,6 +28,12 @@ const steps = [
 ];
 
 export default function HowItWorks() {
+  const router = useRouter();
+
+  const handleButtonClick = () => {
+    router.push("/stations");
+  };
+
   return (
     <section id="how-it-works" className="py-20 px-6">
       <div className="container max-w-7xl mx-auto">
@@ -43,7 +52,11 @@ export default function HowItWorks() {
           ))}
         </div>
         <div className="mt-12 text-center">
-          <Button size="lg" className="font-semibold">
+          <Button
+            size="lg"
+            className="font-semibold"
+            onClick={handleButtonClick}
+          >
             Start Charging Now
           </Button>
         </div>
