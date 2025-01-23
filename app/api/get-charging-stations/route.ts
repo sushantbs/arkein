@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 
-const GOOGLE_API_KEY = process.env.GOOGLE_API_KEY;
+// const GOOGLE_API_KEY = process.env.GOOGLE_API_KEY;
+const GOOGLE_API_KEY = "AIzaSyAFXFL2-YljPo8wGSb-nYf-YcFPYZwees4";
 
 export async function GET() {
   const location = "12.9715987,77.5945627"; // Bangalore coordinates
@@ -14,6 +15,7 @@ export async function GET() {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
+        Referer: "https://arkein.energy",
       },
     });
 

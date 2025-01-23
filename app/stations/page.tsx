@@ -1,4 +1,4 @@
-import ChargingStations from "@/components/ChargingStations";
+import GoogleMapOverlay from "@/components/GoogleMapOverlay";
 
 export default function StationsPage() {
   return (
@@ -7,7 +7,7 @@ export default function StationsPage() {
         <h1 className="text-3xl font-bold text-center mb-6">
           EV Charging Stations
         </h1>
-        <ChargingStations />
+        <GoogleMapOverlay />
       </main>
     </div>
   );
