@@ -1,8 +1,10 @@
 "use client";
 
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { MapPin, Calendar, BatteryCharging, CheckCircle } from "lucide-react";
-import { useRouter } from "next/navigation";
+import Dialog from "@/components/Dialog";
+import EmailForm from "@/components/EmailForm";
 
 const steps = [
   {
@@ -28,10 +30,14 @@ const steps = [
 ];
 
 export default function HowItWorks() {
-  const router = useRouter();
+  const [isDialogOpen, setIsDialogOpen] = useState(false);
 
   const handleButtonClick = () => {
-    router.push("/stations");
+    setIsDialogOpen(true);
+  };
+
+  const handleCloseDialog = () => {
+    setIsDialogOpen(false);
   };
 
   return (
@@ -61,6 +67,16 @@ export default function HowItWorks() {
           </Button>
         </div>
       </div>
+
+      <Dialog isOpen={isDialogOpen} onClose={handleCloseDialog}>
+        <h3 className="text-xl font-bold mb-4">Coming Soon!</h3>
+        <p className="mb-4">
+          Thank you for expressing your interest. Arkein Electric will be
+          operational soon. Please provide your email address so we can keep you
+          updated.
+        </p>
+        <EmailForm />
+      </Dialog>
     </section>
   );
 }
