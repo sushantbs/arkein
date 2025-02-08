@@ -5,10 +5,11 @@ import React, { useState } from "react";
 const EmailForm: React.FC = () => {
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
+  const [disabled, setDisabled] = useState<boolean>(false);
 
   const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
-
+    setDisabled(true);
     try {
       const response = await fetch("/api/save-email", {
         method: "POST",
@@ -20,6 +21,8 @@ const EmailForm: React.FC = () => {
 
       if (response.ok) {
         const { message } = await response.json();
+        setEmail("");
+        setDisabled(false);
         setMessage(message);
       } else {
         setMessage("Server error: Please try again.");
@@ -39,9 +42,10 @@ const EmailForm: React.FC = () => {
           type="email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
+          disabled={disabled}
           placeholder="Enter your email"
           required
-          className="px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+          className="mx-2 px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
         />
         <button
           type="submit"
