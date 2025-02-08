@@ -4,6 +4,7 @@ import React, { useState } from "react";
 
 const EmailForm: React.FC = () => {
   const [email, setEmail] = useState("");
+  const [message, setMessage] = useState("");
 
   const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
@@ -18,34 +19,40 @@ const EmailForm: React.FC = () => {
       });
 
       if (response.ok) {
-        console.log("Email saved successfully");
+        const { message } = await response.json();
+        setMessage(message);
       } else {
-        console.error("Failed to save email");
+        setMessage("Server error: Please try again.");
       }
-    } catch (error) {
-      console.error("An error occurred:", error);
+    } catch {
+      setMessage("Failed to save email! Please try again.");
     }
   };
 
   return (
     <form
       onSubmit={handleSubmit}
-      className="flex flex-col sm:flex-row items-center gap-4"
+      className="flex flex-col sm:flex-column items-center gap-4"
     >
-      <input
-        type="email"
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
-        placeholder="Enter your email"
-        required
-        className="px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-      />
-      <button
-        type="submit"
-        className="px-6 py-2 bg-blue-600 text-white font-semibold rounded-md hover:bg-blue-700 transition duration-300"
-      >
-        Submit
-      </button>
+      <div>
+        <input
+          type="email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          placeholder="Enter your email"
+          required
+          className="px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+        />
+        <button
+          type="submit"
+          className="px-6 py-2 bg-blue-600 text-white font-semibold rounded-md hover:bg-blue-700 transition duration-300"
+        >
+          Submit
+        </button>
+      </div>
+      <div>
+        <span>{message}</span>
+      </div>
     </form>
   );
 };

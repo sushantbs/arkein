@@ -1,32 +1,34 @@
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
+import { PrismaClient } from "@prisma/client";
 import logger from "@/lib/logger";
 
-const database = [];
+const prisma = new PrismaClient();
 
-export async function POST(request: Request) {
+export async function POST(req: NextRequest) {
   try {
-    const { email } = await request.json();
+    const { email } = await req.json();
 
-    // Validate the email
     if (!email || !email.includes("@")) {
-      return NextResponse.json(
-        { message: "Invalid email address" },
-        { status: 400 }
-      );
+      return NextResponse.json({ message: "Invalid email" }, { status: 400 });
     }
 
-    // Save email to database (mocked here)
-    database.push({ email, createdAt: new Date() });
     logger.info(`Received email: ${email}`);
 
-    // Return success response
+    // Save email to database
+    const newEmail = await prisma.email.create({
+      data: { email },
+    });
+
     return NextResponse.json(
-      { message: "Email saved successfully!" },
-      { status: 200 }
+      { message: "Email saved successfully!", newEmail },
+      { status: 201 }
     );
-  } catch (error) {
+  } catch (error: unknown) {
     return NextResponse.json(
-      { message: "Error saving email", error },
+      {
+        message: "Error saving email",
+        error,
+      },
       { status: 500 }
     );
   }
